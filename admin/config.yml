@@ -1,9 +1,6 @@
 backend:
-  name: github
-  repo: VirgilTwobyfour/virgil-website
+  name: git-gateway
   branch: main
-  auth_scope: repo
-
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
@@ -11,10 +8,19 @@ public_folder: "/images/uploads"
 collections:
   - name: "pages"
     label: "Pages"
-    files:
-      - label: "Home Page"
-        name: "home"
-        file: "index.md"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body", name: "body", widget: "markdown" }
+    folder: "pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "posts"
+    label: "Posts"
+    folder: "_posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
