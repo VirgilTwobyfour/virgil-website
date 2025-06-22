@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>{{ title }}</title>
-  </head>
-  <body style="font-family: Georgia, serif; background: #f9f7f0; color: #333; padding: 2rem;">
-    <main>
-      {{ content | safe }}
-    </main>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>{% if title %}{{ title }}{% else %}Virgil's Site{% endif %}</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Virgil’s Potting Shed</h1>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer>
+    <p>© 2025 Virgil Twobyfour</p>
+  </footer>
+</body>
 </html>
