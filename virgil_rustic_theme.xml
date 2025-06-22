@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<b:template xmlns:b="http://www.google.com/2005/gml/b">
+  <b:include data='blog' name='all-head-content'/>
+  <b:skin><![CDATA[
+    /* === Virgil's Rustic Style === */
+    body {
+      background: #f2efe2 url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjnY_K9QThs-W0dvMghH9x4QK5khttEN8mZJJtIaD7MUj9vqHZVZtTiGfQD7541f30yRUQJHnzOm9t2Qcr01NE4irsIP7-vx0yknk6qHzkahlhe--kyFbI6_oQevccojggygyI4852UhRaSIyB1qbS-xY3XAZUhREvi6wkUG_jSefWgh--oemV5bGWJLm9KZ/w426-h640/background2.png') repeat;
+      font-family: Georgia, serif;
+      color: #2b2b2b;
+      margin: 0;
+      padding: 0;
+    }
+    .main-inner, .column-left-inner, .column-right-inner {
+      background: rgba(255,255,255,0.9);
+      padding: 1em;
+      border-radius: 6px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    }
+    a, a:visited {
+      color: #5c4426;
+    }
+    a:hover {
+      color: #a5743f;
+    }
+    .quirky-widget {
+      background: #fffdf5;
+      font-style: italic;
+      font-size: 0.95em;
+      color: #4b3a2c;
+      border: 2px dashed #99845c;
+      padding: 1em;
+      margin: 1em 0;
+    }
+    .quirky-widget::before {
+      content: "🪤 Keith’s Observation:";
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.3em;
+    }
+    body.springtime { background-color: #f5fff0; }
+    body.summer { background-color: #fffdf0; }
+    body.autumn { background-color: #fcf6e3; }
+    body.winter { background-color: #eef0f3; }
+  ]]></b:skin>
+
+  <b:template-skin>default</b:template-skin>
+
+  <b:section id="header" class="header" maxwidgets="1" showaddelement="no">
+    <b:widget id="Header1" locked="true" title="Blog Header" type="Header"/>
+  </b:section>
+
+  <b:section id="main" class="main" showaddelement="yes">
+    <b:widget id="Blog1" locked="false" title="Blog Posts" type="Blog"/>
+  </b:section>
+
+  <b:section id="sidebar-left" class="column-left" showaddelement="yes">
+    <b:widget id="Profile1" locked="false" title="About Me" type="Profile"/>
+    <b:widget id="HTML1" locked="false" title="Keith's Advice" type="HTML"/>
+  </b:section>
+
+  <b:section id="sidebar-right" class="column-right" showaddelement="yes">
+    <b:widget id="BlogArchive1" locked="false" title="Archive" type="BlogArchive"/>
+    <b:widget id="Labels1" locked="false" title="Labels" type="Label"/>
+  </b:section>
+
+  <b:section id="footer" class="footer" showaddelement="yes">
+    <b:widget id="Text1" locked="false" title="Footer Note" type="Text"/>
+  </b:section>
+
+  <b:include name='all-javascript'/>
+  <b:include name='default-adscript'/>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const month = new Date().getMonth();
+      const season = ["winter","winter","springtime","springtime","springtime","summer","summer","summer","autumn","autumn","autumn","winter"];
+      document.body.classList.add(season[month]);
+    });
+  </script>
+</b:template>

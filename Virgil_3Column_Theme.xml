@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<b:template xmlns:b="http://www.google.com/2005/gml/b" version="1.0">
+  <b:layout>
+    <b:section id="left-sidebar" class="sidebar" />
+    <b:section id="main" class="main-content" />
+    <b:section id="right-sidebar" class="sidebar" />
+    <b:section id="footer" class="footer" />
+  </b:layout>
+
+  <b:skin><![CDATA[
+    body {
+      background-color: #f2efe2;
+      background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjnY_K9QThs-W0dvMghH9x4QK5khttEN8mZJJtIaD7MUj9vqHZVZtTiGfQD7541f30yRUQJHnzOm9t2Qcr01NE4irsIP7-vx0yknk6qHzkahlhe--kyFbI6_oQevccojggygyI4852UhRaSIyB1qbS-xY3XAZUhREvi6wkUG_jSefWgh--oemV5bGWJLm9KZ/w426-h640/background2.png");
+      background-repeat: repeat;
+      font-family: 'Georgia', serif;
+      color: #2b2b2b;
+      margin: 0;
+      padding: 0;
+    }
+
+    .main-content, .sidebar {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 1em;
+      margin: 1em;
+    }
+
+    .footer {
+      background-color: #e0d9c3;
+      text-align: center;
+      font-style: italic;
+      font-size: 0.9em;
+      padding: 1em;
+      border-top: 3px dashed #5c4426;
+    }
+
+    a, a:visited {
+      color: #5c4426;
+      text-decoration: underline;
+    }
+    a:hover {
+      color: #a5743f;
+    }
+
+    /* Seasonal Styling */
+    body.springtime { background-color: #f5fff0; }
+    body.summer { background-color: #fffdf0; }
+    body.autumn { background-color: #fcf6e3; }
+    body.winter { background-color: #eef0f3; }
+  ]]></b:skin>
+
+  <b:template-skin>
+    <b:variable name="body.background.color" description="Page Background Color" type="color" default="#f2efe2"/>
+  </b:template-skin>
+
+  <b:script>
+    <![CDATA[
+      document.addEventListener("DOMContentLoaded", function() {
+        const month = new Date().getMonth();
+        const season = ["winter","winter","springtime","springtime","springtime","summer","summer","summer","autumn","autumn","autumn","winter"];
+        document.body.classList.add(season[month]);
+      });
+    ]]>
+  </b:script>
+</b:template>

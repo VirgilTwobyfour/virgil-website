@@ -1,0 +1,20 @@
+Notes From the Potting Shed:
+
+1. banner image at top of all pages (notes.jpg) - not full width. This is the Site Title, so other text saying "notes from the Potting Shed" is not required. I still want to see the background2.jpg around it. Notes.jpg to have a curve-cornered border (as all images should), with a transparent shadow applied (as all images should)
+2. Background2.jpg as the background image to all pages.
+3. All Text header to have a slight shadow (transparent)
+4. Navigation bar with Page hyperlinks directly underneath notes.jpg.
+5. Editable text "Welcome" box in the centre, a bit floaty or parchment-y, round-cornered border, transparent shadow. The text should randomly rotate through a variety of options - I need an easy editor to add these into a table somewhere.
+6. Grid of recent posts, 2–4 across depending on screen size. Thumbnail of the posts accompanying image, first line or few words of the text entry (all hyperlinked). All Post summaries to have a functioning "Like" button/symbol and a "Share" button/symbol, here on the home page and on the main blog page.
+7. Each post box has image, title, short teaser
+9. Footer on each page for copyright purposes, but with editable text as per the "Welcome" box on the home page.
+10. 3-column layout for all pages to allow later placing of functioning "Keith Gadgets" as we used on the Blogger site attempt at Virgil's website (These will need to be built later, once we have the basic site functioning as needed)
+
+
+Pages:
+
+Home     About Virgil     Ramblings             Almanac                               Shoppe                                Visit the Little Country                     Get In Touch                      Placeholder pages
+             |             (this is the Blog     (This is the 365 day functioning      (a placeholder page advertising       (A Virgil-ey guide                           (A working contact page            (Easily setup additional pages
+         About Keith         post page)            calendar with a Virgilism            "goods" but will one day sell         of what visitors                               to allow visitors to email        when the ideas come to me
+             |                                      behind each day as a pop-up)         actual stuff somehow)                  Can expect if they come to the area -          Virgil directly)                 that are automatically linked back
+           FAQ's                                                                                                                  Perhaps involving an interactive map?)                                          to the Navigation Bar)

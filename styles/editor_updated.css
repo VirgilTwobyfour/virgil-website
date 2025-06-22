@@ -1,0 +1,124 @@
+
+/* === Virgil's Blog Editor Styling (editor.css) === */
+
+/* General Layout */
+body {
+  font-family: 'Georgia', serif;
+  background-color: #2e1f0f;
+  color: #f8f1e0;
+  margin: 0;
+  padding: 2em;
+  line-height: 1.6;
+}
+
+/* Form Container */
+form {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Headings */
+h1, h2 {
+  font-family: 'Amatic SC', cursive;
+  text-align: center;
+  font-size: 2.5em;
+  color: #ffeac7;
+}
+
+/* Labels and Inputs */
+label {
+  font-weight: bold;
+  font-size: 1.1em;
+  display: block;
+  margin-top: 1.2em;
+  color: #fcecd3;
+}
+
+input, select, textarea {
+  font-size: 1.1em;
+  width: 100%;
+  padding: 0.6em;
+  border: 1px solid #99845c;
+  border-radius: 6px;
+  background-color: #fdf7ed;
+  color: #2b1a0f;
+}
+
+input[type="file"] {
+  background-color: transparent;
+  color: #fff;
+}
+
+/* Slug and Timestamp Icons */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* Makes calendar and clock icons light */
+}
+
+/* Formatting Toolbar */
+.toolbar {
+  margin: 1em 0;
+  display: flex;
+  gap: 0.5em;
+  flex-wrap: wrap;
+}
+
+.toolbar button {
+  background-color: #6a4d2f;
+  color: #fff7e6;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  font-size: 0.95em;
+  cursor: pointer;
+}
+
+.toolbar button:hover {
+  background-color: #8b6d44;
+}
+
+/* Tooltip Field */
+#linkTooltip {
+  margin-top: 0.5em;
+  font-size: 0.9em;
+  color: #d9c8b5;
+}
+
+/* Preview Section */
+#preview {
+  margin-top: 2em;
+  padding: 1em;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px dashed #bda98f;
+  color: #fffbe6;
+}
+
+/* Buttons (Save, Preview) */
+button.save-button, button.preview-button {
+  background-color: #5a381e;
+  color: #ffeac7;
+  font-size: 1em;
+  margin-top: 1.5em;
+  padding: 0.75em 1.5em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button.save-button:hover, button.preview-button:hover {
+  background-color: #754f2c;
+}
+
+/* Footer (Optional) */
+footer {
+  margin-top: 3em;
+  text-align: center;
+  font-style: italic;
+  font-size: 0.85em;
+  color: #c8bca5;
+}

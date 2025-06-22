@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<b:template xmlns:b="http://www.google.com/2005/gml/b">
+  <b:defaultwidgetversion>2</b:defaultwidgetversion>
+  <b:skin><![CDATA[
+
+/* General Styles */
+body {
+  background-color: #eae6da;
+  font-family: 'Georgia', serif;
+  color: #2b2b2b;
+  background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+  background-attachment: fixed;
+}
+
+header, .header, h1, h2, h3 {
+  color: #3e2f1c;
+  text-shadow: 1px 1px 0 #fff6d5;
+}
+
+a {
+  color: #5c4426;
+}
+a:hover {
+  color: #8b6f47;
+}
+
+/* Layout */
+.main-outer {
+  max-width: 1200px;
+  margin: auto;
+  border: 1px dashed #9c8f74;
+  background-color: #fdfaf4;
+  padding: 20px;
+}
+
+#header {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #e2d8bd;
+  border-bottom: 2px solid #b6a882;
+}
+
+.sidebar, .sidebar-wrapper {
+  background-color: #f3eee2;
+  border: 1px dashed #ccc1a7;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.footer {
+  background-color: #d1c5a4;
+  color: #423727;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9em;
+  border-top: 2px dashed #b4a57e;
+}
+
+.blogger-labels, .post-footer {
+  font-style: italic;
+}
+
+/* Seasonal tweaks (to be enhanced later with scripting or class toggles) */
+.season-spring body { background-color: #edf7e1; }
+.season-summer body { background-color: #fff7d1; }
+.season-autumn body { background-color: #f6e6d8; }
+.season-winter body { background-color: #e0e3ec; }
+
+  ]]></b:skin>
+
+  <b:template-skin>
+    <b:variable name="key.background.color" value="#eae6da"/>
+    <b:variable name="key.text.color" value="#2b2b2b"/>
+  </b:template-skin>
+
+  <b:widgets>
+    <b:widget id='Header1' locked='true' title='Header' type='Header'/>
+    <b:widget id='Blog1' locked='false' title='Main Blog Posts' type='Blog'/>
+    <b:widget id='HTML1' locked='false' title='Sidebar Left' type='HTML'/>
+    <b:widget id='HTML2' locked='false' title='Sidebar Right' type='HTML'/>
+    <b:widget id='HTML3' locked='false' title='Footer Widget' type='HTML'/>
+  </b:widgets>
+
+  <b:includable id='main'>
+    <b:section id='header' class='header' />
+    <div class='main-outer'>
+      <div class='main-inner'>
+        <b:section id='sidebar-left' class='sidebar' />
+        <b:section id='main-content'>
+          <b:widget id='Blog1'/>
+        </b:section>
+        <b:section id='sidebar-right' class='sidebar' />
+      </div>
+    </div>
+    <b:section id='footer' class='footer' />
+  </b:includable>
+
+</b:template>

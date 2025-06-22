@@ -1,0 +1,142 @@
+
+/* === Virgil's Rustic Theme - style.css (Updated) === */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Shadows+Into+Light&display=swap');
+
+/* === General Body Styling === */
+body {
+  background-color: #2e1f0f; /* dark wood tone */
+  background-image: url("/images/background2.png");
+  background-repeat: repeat;
+  font-family: 'Georgia', serif; /* Body text remains unchanged */
+  color: #f1eadf; /* light warm text */
+  margin: 0;
+  padding: 0;
+}
+
+/* === Container Layout === */
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 2em;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; /* 3-column layout */
+  gap: 2em;
+}
+
+/* === Header Styling === */
+header {
+  text-align: center;
+  margin-bottom: 2em;
+  padding: 1em;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+header h1 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 3.5em;
+  margin: 0;
+  color: #ffe8ba;
+}
+
+header p {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 1.2em;
+  margin-top: 0.5em;
+  color: #f8eecb;
+}
+
+/* === Navigation / Page Links === */
+nav.main-nav {
+  text-align: center;
+  background: rgba(20, 15, 10, 0.6);
+  padding: 1em 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  border-bottom: 2px dashed #8d7958;
+}
+
+nav.main-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.5em;
+}
+
+nav.main-nav li {
+  display: inline;
+}
+
+nav.main-nav a {
+  font-family: 'Amatic SC', cursive;
+  font-size: 1.8em;
+  color: #ffeac7;
+  text-decoration: none;
+}
+
+nav.main-nav a:hover {
+  text-decoration: underline;
+  color: #f1cf99;
+}
+
+/* === Main Blog Content === */
+main {
+  background-color: rgba(255, 255, 255, 0.07);
+  padding: 1.5em;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+/* === Post Styling === */
+h2.blog-title {
+  font-family: 'Amatic SC', cursive;
+  font-size: 2.5em;
+  color: #fff7da;
+  margin-bottom: 0.2em;
+}
+
+h3.blog-subtitle {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 1.3em;
+  color: #f6f1d1;
+  margin-top: 0;
+}
+
+/* === Sidebar Styling === */
+aside {
+  background-color: rgba(255, 255, 255, 0.07);
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 1.1em;
+}
+
+/* === Footer === */
+footer {
+  text-align: center;
+  margin-top: 3em;
+  padding: 1em;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #ccc4b2;
+  font-style: italic;
+  font-size: 0.95em;
+  border-top: 1px dashed #5c4426;
+}
+
+/* === Shared Banner Styling === */
+.shared-banner img {
+  display: block;
+  margin: 1em auto;
+  max-width: 90%;
+  height: auto;
+  border: 4px solid #5c4426;
+  border-radius: 6px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+}

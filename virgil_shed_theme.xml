@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<b:template xmlns:b="http://www.google.com/2005/gml/b" version="1.0">
+  <b:skin><![CDATA[
+    body {
+      background-image: url('https://i.imgur.com/ZV8V1Cc.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      font-family: 'Courier New', Courier, monospace;
+      color: #2b2b2b;
+      padding: 10px;
+      border: 10px double #885533;
+    }
+    .main, .content, .post, .widget, .post-body, .blog-posts, .header, .footer {
+      background-color: #ffffffdd;
+      border: 2px dashed #999;
+      box-shadow: 4px 4px #888;
+      padding: 15px;
+      margin-bottom: 20px;
+      font-family: 'Courier New', Courier, monospace;
+    }
+    h1, h2, h3, .post-title {
+      font-weight: bold;
+      font-size: 1.5em;
+      border-bottom: 1px dotted #aaa;
+      background: repeating-linear-gradient(to bottom, #fff, #fff 1px, #ccc 1px, #ccc 2px);
+      padding: 5px;
+    }
+    a {
+      color: #0645AD;
+      text-decoration: underline wavy;
+    }
+    a:hover {
+      color: darkred;
+      background-color: #f9f1c1;
+    }
+    button, .button {
+      background-color: #eae0c0;
+      border: 2px ridge #aaa;
+      padding: 6px 12px;
+      font-family: monospace;
+      cursor: pointer;
+      box-shadow: 2px 2px 0px #666;
+    }
+    button:hover {
+      background-color: #dcd3a3;
+    }
+    .sidebar, .widget-content {
+      background-color: #f7f4e3;
+      border: 1px dashed #aaa;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    footer {
+      font-style: italic;
+      font-size: 0.9em;
+      text-align: center;
+      background-color: #efe8d0;
+      padding: 10px;
+      border-top: 2px dotted #999;
+    }
+    .navbar, .tabs-outer {
+      background-color: #dfd7c0;
+      border-bottom: 2px dashed #888;
+    }
+    img {
+      border: 3px solid #c2b280;
+      box-shadow: 4px 4px 0 #999;
+      filter: sepia(0.3) contrast(1.1);
+      margin-bottom: 10px;
+    }
+    .widget:before {
+      content: "⚙️ ";
+      font-size: 14px;
+      margin-right: 5px;
+      transform: rotate(-5deg);
+      display: inline-block;
+    }
+    .comment-content {
+      background-color: #f0ede0;
+      font-family: 'Courier New', Courier, monospace;
+      border: 1px dotted #aaa;
+      padding: 10px;
+    }
+  ]]></b:skin>
+
+  <b:template-skin>simple</b:template-skin>
+  <b:template-version>1.0</b:template-version>
+
+  <b:section id="main" class="main" maxwidgets="1" showaddelement="yes">
+    <b:widget id="Blog1" type="Blog" title="Blog Posts"/>
+  </b:section>
+
+  <b:section id="sidebar-right-1" class="sidebar" maxwidgets="10" showaddelement="yes">
+    <b:widget id="Profile1" type="Profile" title="About Me"/>
+    <b:widget id="BlogArchive1" type="BlogArchive" title="Blog Archive"/>
+  </b:section>
+
+  <b:section id="footer-1" class="footer" maxwidgets="3" showaddelement="yes">
+    <b:widget id="Attribution1" type="Attribution" title="Attribution"/>
+  </b:section>
+</b:template>

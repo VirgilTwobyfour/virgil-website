@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mrs Pilbeam’s Trouser Fire</title>
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+  <header>
+    <img src="../images/notes.jpg" alt="Notes From The Potting Shed" class="site-banner">
+  </header>
+
+  <div class="welcome-box" id="welcome-box">Mrs Pilbeam’s Trouser Fire</div>
+
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../ramblings.html">← Back to Ramblings</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <article>
+      <h1>Mrs Pilbeam’s Trouser Fire</h1>
+      <p><em>2025-06-13</em></p>
+      <img src="../images/thumb9.jpg" alt="Thumbnail for Mrs Pilbeam’s Trouser Fire">
+      <p>Mrs Pilbeam’s Trouser Fire - It all began with a creaking sound and ended in chutney.</p>
+      <p>This is placeholder content for the full blog post titled "Mrs Pilbeam’s Trouser Fire". More eccentric ramblings to follow...</p>
+
+      <div class="post-actions">
+        <button onclick="toggleLike(this)">♡ Like</button>
+        <button onclick="sharePost('mrs-pilbeams-trouser-fire.html')">Share</button>
+        <button onclick="toggleCommentForm('mrs_pilbeams_trouser_fire')">Comment</button>
+      </div>
+
+      <div id="comment-form-mrs_pilbeams_trouser_fire" style="display:none;">
+        <form onsubmit="handleSubmit(this, 'Mrs Pilbeam’s Trouser Fire')">
+          <label>Name: <input type="text" name="name" required></label><br>
+          <label>Email: <input type="email" name="email" required></label><br>
+          <label>Comment:<br><textarea name="comment" required></textarea></label><br>
+          <label><input type="checkbox" required> I'm not a robot</label><br>
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-box" id="footer-box">A footer thought from Keith...</div>
+    <p><a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Bluesky</a></p>
+  </footer>
+
+  <script src="../scripts/main.js"></script>
+</body>
+</html>
