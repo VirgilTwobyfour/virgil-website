@@ -1,1 +1,13 @@
+<header class="site-header">
+  <img src="/images/notes.jpg" alt="Notes from the Potting Shed" class="site-banner" />
+  <nav class="site-nav">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about/">About Virgil</a></li>
+      <li><a href="/ramblings/">Ramblings</a></li>
+      <li><a href="/shoppe/">Shoppe</a></li>
+      <li><a href="/contact/">Get in Touch</a></li>
+    </ul>
+  </nav>
+</header>
 
