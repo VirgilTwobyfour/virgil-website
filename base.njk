@@ -1,1 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{% if title %}{{ title }}{% else %}Notes from the Potting Shed{% endif %}</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  {% include "header.njk" %}
+
+  <div class="container">
+    <aside class="left-column">
+      <!-- Keith Gadgets or other widgets here -->
+    </aside>
+
+    <main class="center-column">
+      {{ content | safe }}
+    </main>
+
+    <aside class="right-column">
+      <!-- More widgets, calendar, etc. -->
+    </aside>
+  </div>
+
+  {% include "footer.njk" %}
+  {% include "scripts.njk" %}
+</body>
+</html>
 
