@@ -1,6 +1,11 @@
 ---
 title: The Wandering Worm
 date: 2025-06-04T09:45:00Z
+tags:
+  - gardening
+  - mystery
+categories:
+  - blog
 description: Tracking the odd habits of the elusive garden worm.
 image: /images/the-wandering-worm.png
 ---

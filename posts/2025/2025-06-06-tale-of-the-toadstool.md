@@ -1,6 +1,11 @@
 ---
 title: Tale of the Toadstool
 date: 2025-06-06T11:00:00Z
+tags:
+  - gardening
+  - mystery
+categories:
+  - blog
 description: The legend of a toadstool that whispers secrets.
 image: /images/tale-of-the-toadstool.png
 ---

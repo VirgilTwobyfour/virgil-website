@@ -1,6 +1,11 @@
 ---
 title: A Sunday Musing
 date: 2025-06-01T09:00:00Z
+tags:
+  - gardening
+  - mystery
+categories:
+  - blog
 description: Thoughts from a quiet Sunday in the potting shed.
 image: /images/a-sunday-musing.png
 ---
