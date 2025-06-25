@@ -1,10 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>Virgil's Potting Shed Admin</title>
-  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 </head>
 <body>
   <div id="nc-root"></div>
+
+  <script>
+    window.CMS_MANUAL_INIT = true;
+  </script>
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <script>
+    CMS.init({ root: '#nc-root' });
+  </script>
 </body>
 </html>
