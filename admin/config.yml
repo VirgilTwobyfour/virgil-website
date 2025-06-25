@@ -31,3 +31,14 @@ collections:
           - { label: "Welcome Message", name: "welcome_message", widget: "text" }
           - { label: "Footer Text", name: "footer_text", widget: "text" }
           - { label: "Copyright", name: "copyright", widget: "text" }
+
+  - name: "pages"
+    label: "Pages"
+    folder: "pages"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: frontmatter
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
