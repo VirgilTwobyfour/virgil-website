@@ -17,6 +17,11 @@ module.exports = function(eleventyConfig) {
     return collectionApi.getFilteredByGlob("./posts/**/*.md") || [];
   });
 
+  // Collection: all pages
+  eleventyConfig.addCollection("pages", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("./pages/**/*.md") || [];
+  });
+
   // Filter: safe limit for arrays
   eleventyConfig.addFilter("limit", function(arr, limit) {
     if (!Array.isArray(arr)) {
