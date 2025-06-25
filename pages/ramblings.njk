@@ -1,0 +1,30 @@
+---
+layout: base.njk
+pagination:
+  data: collections.posts
+  size: 5               # posts per page
+  alias: posts
+  reverse: true         # show newest first
+  addAllPagesToCollections: true
+  permalink: "/ramblings/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber + 1 }}/{% endif %}"
+---
+
+<h1>Virgil’s Ramblings</h1>
+
+<ul>
+  {% for post in posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.data.title }}</a> — <time>{{ post.date | readableDate }}</time>
+    </li>
+  {% endfor %}
+</ul>
+
+<div class="pagination">
+  {% if pagination.pageNumber > 0 %}
+    <a href="{{ pagination.hrefs[pagination.pageNumber - 1] }}">« Newer Posts</a>
+  {% endif %}
+
+  {% if pagination.pageNumber < pagination.pages.length - 1 %}
+    <a href="{{ pagination.hrefs[pagination.pageNumber + 1] }}">Older Posts »</a>
+  {% endif %}
+</div>
