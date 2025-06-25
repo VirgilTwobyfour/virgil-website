@@ -1,0 +1,171 @@
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background-image: url('../images/background2.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: #f5f5cc;
+}
+
+a {
+  color: #f5f5cc;
+  text-decoration: none;
+}
+
+a:focus, button:focus {
+  outline: 2px solid #f5f5cc;
+  outline-offset: 2px;
+}
+
+/* Navigation */
+nav {
+  background-color: #333;
+  padding: 1rem;
+  text-align: center;
+}
+
+nav a {
+  margin: 0 1rem;
+  color: #f5f5cc;
+}
+
+/* Banner image */
+img.site-banner {
+  max-width: 800px;
+  margin: 0  auto 1.5rem auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 1.5);
+  display: block;
+}
+
+.container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  flex-wrap: wrap;
+  justify-content: center; /* centers flex items horizontally */
+}
+
+.left-column {
+  display: none !important; /* force hide left column */
+}
+
+.right-column {
+  display: none; /* Hide Keith's gadgets for now */
+}
+
+/* When shown, columns get width and styling */
+.left-column, .right-column {
+  display: block;
+  width: 20%;
+  padding: 1rem;
+  background-color: rgba(20, 20, 20, 0.6);
+  color: #ddd;
+}
+
+.center-column {
+  max-width: 720px;
+  width: auto;
+  padding: 1rem;
+  background-color: transparent;
+}
+
+/* Adjust center column width when sidebars visible */
+.container:not(:has(.left-column:empty)) .center-column,
+.container:not(:has(.right-column:empty)) .center-column {
+  width: 60%;
+}
+
+/* Navigation bar styling */
+nav.site-nav {
+  max-width: 720px;
+  margin: 0 auto 2rem auto;
+  background-color: rgba(34, 34, 34, 0.6);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+nav.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  font-size: 0.95rem;
+}
+
+nav.site-nav ul li {
+  display: inline;
+}
+
+/* Welcome message box */
+.welcome-box {
+  max-width: 720px;
+  margin: 2rem auto;
+  background-color: rgba(34, 34, 34, 0.6);
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #f5f5cc;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  text-align: center;
+  display: block; /* allows margin auto centering */
+}
+
+.welcome-box * {
+  text-align: center !important;
+}
+
+/* Footer */
+footer.site-footer {
+  max-width: 800px;
+  margin: 2rem auto 3rem auto;
+  background-color: rgba(34, 34, 34, 0.6);
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  color: #ccc;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .left-column, .right-column {
+    display: none;
+  }
+  .center-column {
+    width: 100%;
+  }
+}
+
+/* Hide empty left and right columns forcefully */
+.left-column,
+.right-column {
+  display: none !important;
+}
+.recent-posts ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  list-style: none;
+  padding-left: 0;
+}
+
+@media (max-width: 700px) {
+  .recent-posts ul {
+    grid-template-columns: 1fr;
+  }
+}
+a:focus,
+button:focus {
+  outline: 3px solid #a8c48f;
+  outline-offset: 2px;
+  outline-style: solid;
+}

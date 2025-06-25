@@ -1,21 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>{% if title %}{{ title }}{% else %}Virgil's Site{% endif %}</title>
-  <link rel="stylesheet" href="/css/style.css" />
+  <title>{{ title | default("Virgil's Potting Shed") }}</title>
+
+<meta name="description" content="{{ description | default('Musings, lore, and ramblings from Virgil’s potting shed.') }}" />
+
+<!-- Open Graph tags for social sharing -->
+<meta property="og:title" content="{{ title | default('Virgil’s Potting Shed') }}" />
+<meta property="og:description" content="{{ description | default('Musings, lore, and ramblings from Virgil’s potting shed.') }}" />
+{% if image %}
+<meta property="og:image" content="{{ image }}" />
+{% endif %}
+<meta property="og:type" content="website" />
+<meta charset="UTF-8" />
+  <title>{% if title %}{{ title }}{% else %}Notes from the Potting Shed{% endif %}</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
 </head>
 <body>
-  <header>
-    <h1>Virgil’s Potting Shed</h1>
-  </header>
+  {% include "header.njk" %}
 
-  <main>
-    {{ content | safe }}
-  </main>
+  <div class="container">
+    <aside class="left-column">
+      <!-- Keith Gadgets or other widgets here -->
+    </aside>
 
-  <footer>
-    <p>© 2025 Virgil Twobyfour</p>
-  </footer>
+    <main class="center-column">
+      {{ content | safe }}
+    </main>
+
+    <aside class="right-column">
+      <!-- More widgets, calendar, etc. -->
+    </aside>
+  </div>
+
+  {% include "footer.njk" %}
+  {% include "scripts.njk" %}
 </body>
 </html>
+

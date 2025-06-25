@@ -1,0 +1,72 @@
+---
+title: Welcome to Virgil’s Potting Shed
+layout: base.njk
+---
+
+<div class="welcome-box">
+  <h1>{{ site.welcome_message }}</h1>
+  <p>This is Virgil’s first page with proper layout and styling.</p>
+</div>
+
+{% set featured = collections.featuredPost[0] %}
+{% if featured %}
+  <section class="featured-post" style="margin-bottom: 3rem; padding: 1rem; border: 2px solid #a8c48f; border-radius: 8px; background-color: #f4f1e9;">
+    <h2>Featured Rambling</h2>
+    <a href="{{ featured.url }}" style="text-decoration: none; color: inherit;">
+      <h3 style="margin-bottom: 0.5rem;">{{ featured.data.title }}</h3>
+      {% if featured.data.image %}
+        <img src="{{ featured.data.image }}" alt="{{ featured.data.title }}" style="max-width: 100%; border-radius: 8px; margin-bottom: 1rem;" />
+      {% endif %}
+      <p>
+        {% if featured.data.description %}
+          {{ featured.data.description }}
+        {% else %}
+          {{ featured.templateContent | truncate(200) }}
+        {% endif %}
+      </p>
+      <small style="color: #b5d291; font-size: 1em;">
+        <time datetime="{{ featured.date.toISOString() }}">
+          {{ featured.date | readableDate }}
+        </time>
+      </small>
+    </a>
+  </section>
+{% endif %}
+
+<section class="recent-posts">
+  <h2>Latest Ramblings</h2>
+  {% set recentPosts = collections.posts | limit(6) %}
+  <ul style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; list-style: none; padding-left: 0;">
+    {% for post in recentPosts %}
+      <article>
+        <a href="{{ post.url }}" style="text-decoration: none; color: inherit;">
+          <h3 style="margin-bottom: 0.3rem;">{{ post.data.title }}</h3>
+          {% if post.data.image %}
+            <img src="{{ post.data.image }}" alt="{{ post.data.title }}" style="max-width: 100%; border-radius: 8px; margin-bottom: 0.5rem;" />
+          {% endif %}
+        </a>
+        <p style="margin-top: 0; margin-bottom: 0.3rem;">
+          {% if post.data.description %}
+            {{ post.data.description }}
+          {% else %}
+            {{ post.templateContent | truncate(150) }}
+          {% endif %}
+        </p>
+        <a href="{{ post.url }}" style="display: inline-block; margin-bottom: 0.5rem; font-weight: bold; color: #a8c48f; font-size: 1.1em;">
+          Read More...
+        </a>
+        <br/>
+        <small style="color: #b5d291; font-size: 1em;">
+          <time datetime="{{ post.date.toISOString() }}">
+            {{ post.date | readableDate }}
+          </time>
+        </small>
+      </article>
+    {% else %}
+      <li>
+        <p>Looks like Virgil hasn't penned any ramblings yet.</p>
+        <p>Why not explore the <a href="/about/">About page</a> to learn more, or check back soon for fresh tales from the potting shed.</p>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
