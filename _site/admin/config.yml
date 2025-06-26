@@ -2,13 +2,13 @@ backend:
   name: git-gateway
   branch: main  # or your default branch
 
-media_folder: "images/uploads"       # Where uploaded images will be stored in your repo
-public_folder: "/images/uploads"     # How images are referenced in the site
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
 
 collections:
-  - name: "posts"
-    label: "Blog Posts"
-    folder: "posts"
+  - name: "posts-2025"
+    label: "Posts 2025"
+    folder: "posts/2025"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     extension: "md"
@@ -18,6 +18,37 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Featured Image", name: "image", widget: "image" }
       - { label: "Description", name: "description", widget: "text" }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+      - label: "Categories"
+        name: "categories"
+        widget: "list"
+        required: false
+      - { label: "Featured", name: "featured", widget: "boolean", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "posts-2024"
+    label: "Posts 2024"
+    folder: "posts/2024"
+    create: false
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: "md"
+    format: frontmatter
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "text" }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+      - label: "Categories"
+        name: "categories"
+        widget: "list"
+        required: false
       - { label: "Featured", name: "featured", widget: "boolean", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
 
@@ -31,3 +62,14 @@ collections:
           - { label: "Welcome Message", name: "welcome_message", widget: "text" }
           - { label: "Footer Text", name: "footer_text", widget: "text" }
           - { label: "Copyright", name: "copyright", widget: "text" }
+
+  - name: "pages"
+    label: "Pages"
+    folder: "pages"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: frontmatter
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }

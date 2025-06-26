@@ -1,25 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>Virgil's Potting Shed Admin</title>
-  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 </head>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
-    });
-  }
-</script>
-
 <body>
+  <div id="nc-root"></div>
+
   <script>
-    // Register preview templates here if you want custom previews
+    window.CMS_MANUAL_INIT = true;
+  </script>
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <script>
+    CMS.init({ root: '#nc-root' });
   </script>
 </body>
 </html>

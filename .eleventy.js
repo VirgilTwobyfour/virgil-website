@@ -17,9 +17,77 @@ module.exports = function(eleventyConfig) {
     return collectionApi.getFilteredByGlob("./posts/**/*.md") || [];
   });
 
+  // Collection: posts from 2025
+  eleventyConfig.addCollection("posts2025", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("./posts/2025/**/*.md") || [];
+  });
+
+  // Collection: posts from 2024
+  eleventyConfig.addCollection("posts2024", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("./posts/2024/**/*.md") || [];
+  });
+
   // Collection: all pages
   eleventyConfig.addCollection("pages", function(collectionApi) {
     return collectionApi.getFilteredByGlob("./pages/**/*.md") || [];
+  });
+
+  // Collection: all unique tags
+  eleventyConfig.addCollection("tagList", function(collectionApi) {
+    const tagsSet = new Set();
+    collectionApi.getAll().forEach(item => {
+      if ("tags" in item.data) {
+        let tags = item.data.tags;
+        if (typeof tags === "string") {
+          tags = [tags];
+        }
+        tags.forEach(tag => tagsSet.add(tag));
+      }
+    });
+    return [...tagsSet];
+  });
+
+  // Collection: all unique categories
+  eleventyConfig.addCollection("categoryList", function(collectionApi) {
+    const categoriesSet = new Set();
+    collectionApi.getAll().forEach(item => {
+      if ("categories" in item.data) {
+        let cats = item.data.categories;
+        if (typeof cats === "string") {
+          cats = [cats];
+        }
+        cats.forEach(cat => categoriesSet.add(cat));
+      }
+    });
+    return [...categoriesSet];
+  });
+
+  // Collection: posts grouped by tag
+  eleventyConfig.addCollection("postsByTag", function(collectionApi) {
+    let tagMap = {};
+    collectionApi.getFilteredByGlob("./posts/**/*.md").forEach(post => {
+      if (!post.data.tags) return;
+      let tags = Array.isArray(post.data.tags) ? post.data.tags : [post.data.tags];
+      tags.forEach(tag => {
+        if (!tagMap[tag]) tagMap[tag] = [];
+        tagMap[tag].push(post);
+      });
+    });
+    return tagMap;  // object: { tagName: [posts], ... }
+  });
+
+  // Collection: posts grouped by category
+  eleventyConfig.addCollection("postsByCategory", function(collectionApi) {
+    let catMap = {};
+    collectionApi.getFilteredByGlob("./posts/**/*.md").forEach(post => {
+      if (!post.data.categories) return;
+      let cats = Array.isArray(post.data.categories) ? post.data.categories : [post.data.categories];
+      cats.forEach(cat => {
+        if (!catMap[cat]) catMap[cat] = [];
+        catMap[cat].push(post);
+      });
+    });
+    return catMap;  // object: { categoryName: [posts], ... }
   });
 
   // Filter: safe limit for arrays
