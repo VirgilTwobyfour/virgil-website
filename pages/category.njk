@@ -2,30 +2,28 @@
 pagination:
   data: collections.categoryList
   size: 1
-  alias: category
-permalink: "/categories/{{ category | slug }}/index.html"
-eleventyExcludeFromCollections: true
+  alias: categoryObj
+permalink: "/categories/{{ categoryObj.slug }}/index.html"
 ---
 
-{% set posts = collections.postsByCategory[category] or [] %}
 
 {% extends "base.njk" %}
 
 {% block content %}
-  <h1>Posts in category "{{ category }}"</h1>
+  <h1>Posts in category "{{ categoryObj.name }}"</h1>
 
-  {% if posts.length == 0 %}
-    <p>No posts found for this category.</p>
+  {% set postsForCategory = collections.postsByCategory[categoryObj.name] or [] %}
+
+  {% if postsForCategory.length == 0 %}
+    <p>No posts found in this category.</p>
   {% else %}
     <ul>
-      {% for post in posts %}
-        <li>
-          <a href="{{ post.url }}">{{ post.data.title }}</a>  
-          <small>{{ post.date | readableDate }}</small>
-        </li>
+      {% for post in postsForCategory %}
+        <li><a href="{{ post.url }}">{{ post.data.title }}</a> - <small>{{ post.date | readableDate }}</small></li>
       {% endfor %}
     </ul>
   {% endif %}
 
   <p><a href="/categories/">Back to all categories</a></p>
 {% endblock %}
+

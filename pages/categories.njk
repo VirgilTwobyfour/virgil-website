@@ -1,6 +1,5 @@
 ---
-permalink: "/categories/index.html"
-eleventyExcludeFromCollections: true
+permalink: "/categories/"
 ---
 
 {% extends "base.njk" %}
@@ -8,15 +7,9 @@ eleventyExcludeFromCollections: true
 {% block content %}
   <h1>All Categories</h1>
 
-  {% if collections.categoryList.length == 0 %}
-    <p>No categories found.</p>
-  {% else %}
-    <ul>
-      {% for category in collections.categoryList %}
-        <li><a href="/categories/{{ category | slug }}/">{{ category }}</a></li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-
-  <p><a href="/ramblings/">Back to blog</a></p>
+  <ul>
+    {% for category in collections.categoryList %}
+      <li><a href="/categories/{{ category | slug }}/">{{ category }}</a></li>
+    {% endfor %}
+  </ul>
 {% endblock %}

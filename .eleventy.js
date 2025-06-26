@@ -1,35 +1,14 @@
+const slugify = require("slugify");
+
 module.exports = function(eleventyConfig) {
   // Pass through static assets folders
   eleventyConfig.addPassthroughCopy("admin");
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("images");
 
-  // Collection: featured post(s)
-  eleventyConfig.addCollection("featuredPost", function(collectionApi) {
-    return (collectionApi.getFilteredByGlob("./posts/**/*.md") || [])
-      .filter(post => post.data.featured)
-      .sort((a, b) => b.date - a.date)
-      .slice(0, 1);
-  });
-
   // Collection: all posts
   eleventyConfig.addCollection("posts", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("./posts/**/*.md") || [];
-  });
-
-  // Collection: posts from 2025
-  eleventyConfig.addCollection("posts2025", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("./posts/2025/**/*.md") || [];
-  });
-
-  // Collection: posts from 2024
-  eleventyConfig.addCollection("posts2024", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("./posts/2024/**/*.md") || [];
-  });
-
-  // Collection: all pages
-  eleventyConfig.addCollection("pages", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("./pages/**/*.md") || [];
+    return collectionApi.getFilteredByGlob("posts/**/*.md") || [];
   });
 
   // Collection: all unique tags
@@ -44,7 +23,11 @@ module.exports = function(eleventyConfig) {
         tags.forEach(tag => tagsSet.add(tag));
       }
     });
-    return [...tagsSet];
+    // Return array of objects with name and slug
+    return [...tagsSet].map(tag => ({
+      name: tag,
+      slug: slugify(tag, { lower: true, strict: true })
+    }));
   });
 
   // Collection: all unique categories
@@ -59,13 +42,17 @@ module.exports = function(eleventyConfig) {
         cats.forEach(cat => categoriesSet.add(cat));
       }
     });
-    return [...categoriesSet];
+    // Return array of objects with name and slug
+    return [...categoriesSet].map(cat => ({
+      name: cat,
+      slug: slugify(cat, { lower: true, strict: true })
+    }));
   });
 
   // Collection: posts grouped by tag
   eleventyConfig.addCollection("postsByTag", function(collectionApi) {
     let tagMap = {};
-    collectionApi.getFilteredByGlob("./posts/**/*.md").forEach(post => {
+    collectionApi.getFilteredByGlob("posts/**/*.md").forEach(post => {
       if (!post.data.tags) return;
       let tags = Array.isArray(post.data.tags) ? post.data.tags : [post.data.tags];
       tags.forEach(tag => {
@@ -73,13 +60,13 @@ module.exports = function(eleventyConfig) {
         tagMap[tag].push(post);
       });
     });
-    return tagMap;  // object: { tagName: [posts], ... }
+    return tagMap;
   });
 
   // Collection: posts grouped by category
   eleventyConfig.addCollection("postsByCategory", function(collectionApi) {
     let catMap = {};
-    collectionApi.getFilteredByGlob("./posts/**/*.md").forEach(post => {
+    collectionApi.getFilteredByGlob("posts/**/*.md").forEach(post => {
       if (!post.data.categories) return;
       let cats = Array.isArray(post.data.categories) ? post.data.categories : [post.data.categories];
       cats.forEach(cat => {
@@ -87,25 +74,10 @@ module.exports = function(eleventyConfig) {
         catMap[cat].push(post);
       });
     });
-    return catMap;  // object: { categoryName: [posts], ... }
+    return catMap;
   });
 
-  // Filter: safe limit for arrays
-  eleventyConfig.addFilter("limit", function(arr, limit) {
-    if (!Array.isArray(arr)) {
-      return [];
-    }
-    return arr.slice(0, limit);
-  });
-
-  // Filter: truncate string to length with clamp
-  eleventyConfig.addFilter("truncate", (str, length = 150, clamp = '…') => {
-    if (!str) return '';
-    if (str.length <= length) return str;
-    return str.slice(0, length) + clamp;
-  });
-
-  // Filter: format date in readable UK style
+  // Filters
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     return dateObj.toLocaleDateString("en-GB", {
       day: "2-digit",
@@ -114,7 +86,24 @@ module.exports = function(eleventyConfig) {
     });
   });
 
-  // Directory settings
+  eleventyConfig.addFilter("limit", function(arr, limit) {
+    if (!Array.isArray(arr)) {
+      return [];
+    }
+    return arr.slice(0, limit);
+  });
+
+  eleventyConfig.addFilter("truncate", (str, length = 150, clamp = '…') => {
+    if (!str) return '';
+    if (str.length <= length) return str;
+    return str.slice(0, length) + clamp;
+  });
+
+  // Add slug filter for templates, just in case
+  eleventyConfig.addFilter("slug", function(str) {
+    return slugify(str, { lower: true, strict: true });
+  });
+
   return {
     dir: {
       input: ".",

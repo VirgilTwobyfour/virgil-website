@@ -1,0 +1,15 @@
+---
+permalink: "/files-debug/"
+eleventyExcludeFromCollections: true
+---
+
+{% extends "base.njk" %}
+
+{% block content %}
+  <h1>Files Eleventy Sees</h1>
+  <ul>
+    {% for file in collections.allFilesDebug %}
+      <li>{{ file }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

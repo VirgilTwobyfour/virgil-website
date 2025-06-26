@@ -1,0 +1,11 @@
+https://app.netlify.com/projects/notesfromthepottingshed/configuration/general
+
+npx @11ty/eleventy
+
+
+git add .
+git commit -m "Update Eleventy collections and templates for tags/categories"
+Push to your remote repository (e.g., GitHub):
+
+
+git push origin main

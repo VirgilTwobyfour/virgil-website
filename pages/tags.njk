@@ -1,6 +1,5 @@
 ---
-permalink: "/tags/index.html"
-eleventyExcludeFromCollections: true
+permalink: "/tags/"
 ---
 
 {% extends "base.njk" %}
@@ -8,15 +7,9 @@ eleventyExcludeFromCollections: true
 {% block content %}
   <h1>All Tags</h1>
 
-  {% if collections.tagList.length == 0 %}
-    <p>No tags found.</p>
-  {% else %}
-    <ul>
-      {% for tag in collections.tagList %}
-        <li><a href="/tags/{{ tag | slug }}/">{{ tag }}</a></li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-
-  <p><a href="/ramblings/">Back to blog</a></p>
+  <ul>
+    {% for tag in collections.tagList %}
+      <li><a href="/tags/{{ tag | slug }}/">{{ tag }}</a></li>
+    {% endfor %}
+  </ul>
 {% endblock %}
