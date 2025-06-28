@@ -99,9 +99,14 @@ module.exports = function(eleventyConfig) {
     return str.slice(0, length) + clamp;
   });
 
-  // Add slug filter for templates, just in case
+  // Add slug filter for templates
   eleventyConfig.addFilter("slug", function(str) {
     return slugify(str, { lower: true, strict: true });
+  });
+
+  // Add missing plus filter to do addition in templates
+  eleventyConfig.addFilter("plus", function(value, addition) {
+    return Number(value) + Number(addition);
   });
 
   return {
