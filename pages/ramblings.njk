@@ -1,30 +1,104 @@
 ---
-layout: base.njk
 pagination:
   data: collections.posts
-  size: 5               # posts per page
-  alias: posts
-  reverse: true         # show newest first
-  addAllPagesToCollections: true
-  permalink: "/ramblings/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber + 1 }}/{% endif %}"
+  size: 5
+  alias: postsPage
+  reverse: true
+permalink: "/ramblings/{{ pagination.pageNumber | plus(1) }}/"
+eleventyExcludeFromCollections: true
 ---
 
-<h1>Virgil’s Ramblings</h1>
+{% extends "base.njk" %}
 
-<ul>
-  {% for post in posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.data.title }}</a> — <time>{{ post.date | readableDate }}</time>
-    </li>
-  {% endfor %}
-</ul>
+{% block content %}
+  <h1>Virgil’s Ramblings</h1>
 
-<div class="pagination">
-  {% if pagination.pageNumber > 0 %}
-    <a href="{{ pagination.hrefs[pagination.pageNumber - 1] }}">« Newer Posts</a>
+  <form id="searchForm" action="/ramblings/1/" method="get">
+    <input
+      type="text"
+      name="q"
+      placeholder="Search ramblings"
+      value="{{ searchQuery | safe }}"
+      aria-label="Search ramblings"
+    />
+    <select name="filter" aria-label="Filter by tag or category">
+      <option value="">Filter by Tag or Category</option>
+      <optgroup label="Tags">
+        {% for tag in collections.tagList %}
+          <option value="tag:{{ tag.slug }}" {% if filter == "tag:" + tag.slug %}selected{% endif %}>{{ tag.name }}</option>
+        {% endfor %}
+      </optgroup>
+      <optgroup label="Categories">
+        {% for cat in collections.categoryList %}
+          <option value="category:{{ cat.slug }}" {% if filter == "category:" + cat.slug %}selected{% endif %}>{{ cat.name }}</option>
+        {% endfor %}
+      </optgroup>
+    </select>
+    <button type="submit">Search</button>
+  </form>
+
+  {% set searchQuery = "" %}
+  {% set filter = "" %}
+
+  {# Parse URL params for q and filter - only works if query string is passed in #}
+  {% if page.url contains "?" %}
+    {% set urlParams = page.url | split("?")[1] | split("&") %}
+    {% for param in urlParams %}
+      {% set kv = param | split("=") %}
+      {% if kv[0] == "q" %}
+        {% set searchQuery = kv[1] | urlDecode %}
+      {% endif %}
+      {% if kv[0] == "filter" %}
+        {% set filter = kv[1] | urlDecode %}
+      {% endif %}
+    {% endfor %}
   {% endif %}
 
-  {% if pagination.pageNumber < pagination.pages.length - 1 %}
-    <a href="{{ pagination.hrefs[pagination.pageNumber + 1] }}">Older Posts »</a>
+  {# Filter posts based on search query and filter type #}
+  {% set filteredPosts = postsPage | filter(post => {
+    let matchQuery = true;
+    let matchFilter = true;
+
+    if (searchQuery) {
+      const qLower = searchQuery.toLowerCase();
+      matchQuery = post.data.title.toLowerCase().includes(qLower) ||
+                   (post.data.description && post.data.description.toLowerCase().includes(qLower)) ||
+                   (post.templateContent && post.templateContent.toLowerCase().includes(qLower));
+    }
+
+    if (filter) {
+      const parts = filter.split(":");
+      const type = parts[0];
+      const value = parts[1];
+      if (type == "tag") {
+        matchFilter = post.data.tags && post.data.tags.some(t => t.toLowerCase() == value);
+      } else if (type == "category") {
+        matchFilter = post.data.categories && post.data.categories.some(c => c.toLowerCase() == value);
+      }
+    }
+
+    return matchQuery && matchFilter;
+  }) %}
+
+  {% if filteredPosts.length == 0 %}
+    <p>No ramblings found matching your search or filter.</p>
+  {% else %}
+    <ul>
+      {% for post in filteredPosts %}
+        <li>
+          <a href="{{ post.url }}">{{ post.data.title }}</a> - <small>{{ post.date | readableDate }}</small>
+          <p>{{ post.data.description | truncate(150) }}</p>
+        </li>
+      {% endfor %}
+    </ul>
   {% endif %}
-</div>
+
+  <nav>
+    {% if pagination.href.previous %}
+      <a href="{{ pagination.href.previous }}{% if searchQuery or filter %}?q={{ searchQuery | urlEncode }}&filter={{ filter | urlEncode }}{% endif %}">← Previous</a>
+    {% endif %}
+    {% if pagination.href.next %}
+      <a href="{{ pagination.href.next }}{% if searchQuery or filter %}?q={{ searchQuery | urlEncode }}&filter={{ filter | urlEncode }}{% endif %}">Next →</a>
+    {% endif %}
+  </nav>
+{% endblock %}
