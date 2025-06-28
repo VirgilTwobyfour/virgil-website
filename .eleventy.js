@@ -99,7 +99,7 @@ module.exports = function(eleventyConfig) {
     return str.slice(0, length) + clamp;
   });
 
-  // Add slug filter for templates
+  // Add slug filter for templates, just in case
   eleventyConfig.addFilter("slug", function(str) {
     return slugify(str, { lower: true, strict: true });
   });
